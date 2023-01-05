@@ -1,0 +1,14 @@
+Trần Trung Hiếu
+Báo cáo ngày 4/1/2023
+
+Hôm nay đã làm gì:
++ Nghiên cứu tiếp về java collection
++ Làm bài tập trên Hackerrank
++ Hoàn thành due cũ trên trello.
+
+Ngày mai làm gì:
++ Nghiên cứu về OOP trong java
++ Làm thêm bài tập
+
+Khó khăn vương mắc:
++ Còn đang chưa nắm chắc về java collection, sẽ nghiên cứu thêm và hỏi các anh ạ

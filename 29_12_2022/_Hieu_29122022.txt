@@ -1,0 +1,7 @@
+Trần Trung Hiếu 29/12/2022
+Hôm nay đã làm gì:
+Tìm hiểu và thực hành thêm về datatype, variable, operator và flow control trong java core.
+Ngày mai sẽ làm gì:
+Tìm hiểu về Java Collection và hoàn thiện due.
+Có khó khăn gì:
+Hiện tại là chưa ạ.
