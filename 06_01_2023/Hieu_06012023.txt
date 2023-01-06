@@ -1,0 +1,18 @@
+Trần Trung Hiếu
+Báo cáo ngày 6/1/2023
+
+Hôm nay đã làm gì:
++ Nghiên cứu tiếp về OOP java.
++ Làm bài tập trên leetcode.
++ Hoàn thành due trên trello.
+
+Buổi tới làm gì:
++ Nghiên cứu tiếp về OOP trong Java.
++ Bắt đầu task nghiên cứu của tuần tới về Java Backend.
++ Làm thêm bài tập.
++ Hoàn thành báo cáo nghiên cứu của các task cũ.
+
+Khó khăn vương mắc:
++ Còn đang cần hoàn thiện báo cáo để kiểm tra đánh giá.
+
+https://github.com/trnhieu102/baocaocongviec
