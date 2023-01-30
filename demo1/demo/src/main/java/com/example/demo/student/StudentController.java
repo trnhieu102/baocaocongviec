@@ -38,10 +38,10 @@ public class StudentController {
     }
 
     @PutMapping("/put/{studentId}")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     public void updateStudentById(@PathVariable("studentId") Integer studentId,
                                   @RequestParam(value = "name", required = false) String name,
-                                  @RequestParam(value = "dob", required = false) LocalDate dob,
+                                  @RequestParam(value = "dob", required = false)
+                                  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dob,
                                   @RequestParam(value = "sex", required = false) String sex){
         studentService.putStudentById(studentId, name, dob, sex);
     }

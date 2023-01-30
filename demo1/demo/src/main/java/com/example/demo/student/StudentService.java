@@ -64,9 +64,9 @@ public class StudentService {
             student.setName(name);
         }
 
-        if (dob != null && !Objects.equals(dob, student.getDob())){
+        //if (dob != null && !Objects.equals(dob, student.getDob())){
             student.setDob(dob);
-        }
+        //}
 
         if (sex != null && !Objects.equals(sex, student.getSex())){
             student.setSex(sex);
