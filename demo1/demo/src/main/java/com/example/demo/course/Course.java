@@ -2,6 +2,7 @@ package com.example.demo.course;
 
 import com.example.demo.student.Student;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Course {
     private String courseName;
 
     @ManyToMany(mappedBy = "linkedCourses")
-    @JsonBackReference
+    @JsonIgnore
     private List<Student> linkedStudents = new ArrayList<>();
 
     public Course(){
