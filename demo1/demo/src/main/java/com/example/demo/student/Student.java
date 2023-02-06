@@ -1,8 +1,14 @@
 package com.example.demo.student;
 
+import com.example.demo.course.Course;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -26,6 +32,14 @@ public class Student {
     private Integer studentId;
     @Transient
     private Integer age;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "student_course",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    @JsonManagedReference
+    private List<Course> linkedCourses = new ArrayList<>();
 
     public Student() {
     }
@@ -89,6 +103,22 @@ public class Student {
 
     public void setStudentId(Integer studentId) {
         this.studentId = studentId;
+    }
+
+    public List<Course> getLinkedCourses() {
+        return linkedCourses;
+    }
+
+    public void addCourse(Course course) {
+        this.linkedCourses.add(course);
+    }
+
+    public void removeCourse(Course course) {
+        this.linkedCourses.remove(course);
+    }
+
+    public void setLinkedCourses(List<Course> linkedCourses) {
+        this.linkedCourses = linkedCourses;
     }
 
     @Override

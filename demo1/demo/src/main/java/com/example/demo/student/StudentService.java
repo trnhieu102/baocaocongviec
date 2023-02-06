@@ -1,9 +1,16 @@
 package com.example.demo.student;
 
+import com.example.demo.course.Course;
+import com.example.demo.course.CourseRepository;
+import com.example.demo.course.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +25,9 @@ public class StudentService {
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
+
+    @Autowired
+    private CourseRepository courseRepository;
 
     public List<Student> getStudent() {
 
@@ -71,6 +81,38 @@ public class StudentService {
         if (sex != null && !Objects.equals(sex, student.getSex())){
             student.setSex(sex);
         }
+    }
+
+    public void viewCoursesByStudentId(Integer studentId)
+    {
+        Student student = studentRepository.findByStudentId(studentId).
+                orElseThrow(()-> new RuntimeException("Student with id " + studentId + "does not exist"));
+
+        List<Course> courses = student.getLinkedCourses();
+        if(courses.isEmpty()) {
+            throw new RuntimeException("Student with id " + studentId + "does not enroll in any course");
+        }
+    }
+
+    public void addCourseToStudentId(Integer studentId, Long courseId)
+    {
+        Student student = studentRepository.findByStudentId(studentId).
+                orElseThrow(()-> new RuntimeException("Student with id " + studentId + "does not exist"));
+        Course course = courseRepository.findById(courseId).get();
+        student.addCourse(course);
+        studentRepository.save(student);
+        course.addStudent(student);
+        courseRepository.save(course);
+    }
+
+    public void removeCourseFromStudentId(Integer studentId, Long courseId) {
+        Student student = studentRepository.findByStudentId(studentId).
+                orElseThrow(()-> new RuntimeException("Student with id " + studentId + "does not exist"));
+        Course course = courseRepository.findById(courseId).get();
+        student.removeCourse(course);
+        studentRepository.save(student);
+        course.removeStudent(student);
+        courseRepository.save(course);
     }
 }
 
