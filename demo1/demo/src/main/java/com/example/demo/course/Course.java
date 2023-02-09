@@ -61,6 +61,14 @@ public class Course {
         this.linkedStudents.remove(student);
     }
 
+    public List<Student> getLinkedStudents() {
+        return linkedStudents;
+    }
+
+    public void setLinkedStudents(List<Student> linkedStudents) {
+        this.linkedStudents = linkedStudents;
+    }
+
     @Override
     public String toString() {
         return "course{" +

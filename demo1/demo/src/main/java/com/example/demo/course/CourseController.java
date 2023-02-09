@@ -1,7 +1,9 @@
 package com.example.demo.course;
 
+import com.example.demo.dto.BaseRespond;
+import com.example.demo.dto.StudentInfoDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +14,9 @@ public class CourseController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @GetMapping
     public List<Course> getAllCourses(){
@@ -28,8 +33,14 @@ public class CourseController {
         courseService.saveCourse(course);
     }
 
-    @DeleteMapping("/delete/{courseId}")
+    @DeleteMapping("/{courseId}")
     public void deleteCourse(@PathVariable("courseId") Long courseId){
         courseService.removeCourse(courseId);
+    }
+
+    @GetMapping("/{courseId}/students")
+    public BaseRespond getLinkedStudents(@PathVariable("courseId") Long cid){
+
+        return courseService.findStudents(cid);
     }
 }
